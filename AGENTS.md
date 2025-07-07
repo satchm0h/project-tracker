@@ -31,7 +31,7 @@ my_app/
 ├── tests/
 │   ├── unit/
 │   └── integration/
-├── docs/                       # Sphinx or Markdown-based documentation
+├── docs/                       # Markdown-based documentation
 ├── run.py
 ├── requirements.txt
 ├── pyproject.toml              # For tool config (black, isort, mypy)
@@ -105,7 +105,7 @@ my_app/
 
 * **Backend Docs**:
 
-  * Use **Sphinx** or **Markdown** in `docs/` folder
+  * Use **Markdown** in `docs/` folder
   * Include:
 
     * API endpoints (path, method, params)
@@ -163,7 +163,7 @@ my_app/
 | Start Flask app             | `flask run`                    |
 | Start SPA dev server        | `cd frontend && npm start`     |
 | Build SPA for prod          | `cd frontend && npm run build` |
-| Build backend docs (Sphinx) | `cd docs && make html`         |
+| Build backend docs          | `cd docs && make html`         |
 
 ---
 
