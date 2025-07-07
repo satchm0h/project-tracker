@@ -3,9 +3,12 @@ from flask import Flask
 from .database import db
 
 
-def create_app():
+def create_app(config_object: str | None = "app.config.Config", **overrides):
     app = Flask(__name__)
-    app.config.from_object("app.config.Config")
+    if config_object:
+        app.config.from_object(config_object)
+    if overrides:
+        app.config.update(overrides)
 
     db.init_app(app)
 
