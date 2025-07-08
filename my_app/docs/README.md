@@ -96,6 +96,19 @@ Common tasks:
 | Run tests       | `pytest`                  |
 | Coverage report | `pytest --cov=app`        |
 
+
+### SPA Development
+
+The frontend is built with Vite. During development, run the dev server:
+
+```bash
+cd frontend && npm start
+```
+
+The Vite configuration proxies API requests under `/api` to the Flask app
+running on port `5000`, so the SPA can communicate with the backend without
+cross-origin issues.
+
 ## SPA Styling & Assets
 
 The React frontend can be styled using your preferred approach:
@@ -109,3 +122,4 @@ The React frontend can be styled using your preferred approach:
 
 The repository includes a `global.css` file imported in `main.jsx` and a sample
 `ProjectList.module.css` demonstrating component-level styles.
+
