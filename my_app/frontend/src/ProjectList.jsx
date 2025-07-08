@@ -1,14 +1,26 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { getProjects } from './services/api';
 
 function ProjectList() {
   const [projects, setProjects] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    fetch('/api/projects')
-      .then((res) => res.json())
-      .then((data) => setProjects(data));
+    getProjects()
+      .then((data) => setProjects(data))
+      .catch((err) => setError(err.message))
+      .finally(() => setLoading(false));
   }, []);
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
+
+  if (error) {
+    return <p>Error: {error}</p>;
+  }
 
   return (
     <div>

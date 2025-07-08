@@ -1,5 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
+import {
+  getProject,
+  createProject,
+  updateProject,
+} from './services/api';
 
 const emptyProject = {
   name: '',
@@ -15,16 +20,16 @@ function ProjectForm() {
   const navigate = useNavigate();
   const isEditing = Boolean(id);
   const [formData, setFormData] = useState(emptyProject);
+  const [loading, setLoading] = useState(isEditing);
+  const [saving, setSaving] = useState(false);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     if (isEditing) {
-      fetch(`/api/projects/${id}`)
-        .then((res) => {
-          if (!res.ok) throw new Error('Project not found');
-          return res.json();
-        })
+      getProject(id)
         .then((data) => setFormData(data))
-        .catch(() => setFormData(emptyProject));
+        .catch((err) => setError(err.message))
+        .finally(() => setLoading(false));
     }
   }, [id, isEditing]);
 
@@ -35,19 +40,25 @@ function ProjectForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const method = isEditing ? 'PUT' : 'POST';
-    const url = isEditing ? `/api/projects/${id}` : '/api/projects';
-    fetch(url, {
-      method,
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify(formData),
-    })
-      .then((res) => res.json())
-      .then(() => navigate('/projects'));
+    setSaving(true);
+    const request = isEditing
+      ? updateProject(id, formData)
+      : createProject(formData);
+    request
+      .then(() => navigate('/projects'))
+      .catch((err) => {
+        setSaving(false);
+        setError(err.message);
+      });
   };
+
+  if (loading) {
+    return <p>Loading...</p>;
+  }
 
   return (
     <form onSubmit={handleSubmit}>
+      {error && <p>Error: {error}</p>}
       <h2>{isEditing ? 'Edit' : 'Create'} Project</h2>
       <div>
         <label>Name:</label>
@@ -98,7 +109,9 @@ function ProjectForm() {
           required
         />
       </div>
-      <button type="submit">Save</button>
+      <button type="submit" disabled={saving}>
+        {saving ? 'Saving...' : 'Save'}
+      </button>
     </form>
   );
 }
