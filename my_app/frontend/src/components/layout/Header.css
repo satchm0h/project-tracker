@@ -1,0 +1,213 @@
+/* Header Styles */
+.header {
+  background-color: var(--surface-color);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--shadow-sm);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  transition: all 0.2s ease;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4rem;
+}
+
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-weight: 600;
+  font-size: var(--font-size-lg);
+  color: var(--text-primary);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.logo:hover {
+  color: var(--color-primary);
+}
+
+.logo-icon {
+  color: var(--color-primary);
+}
+
+.logo-text {
+  display: none;
+}
+
+/* Header Nav Actions Container */
+.header-nav-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+/* Desktop Navigation */
+.nav-desktop {
+  display: none;
+  align-items: center;
+  gap: var(--space-1);
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-md);
+  font-weight: 500;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+}
+
+.nav-link:hover {
+  color: var(--text-primary);
+  background-color: var(--surface-hover);
+}
+
+.nav-link-active {
+  color: var(--color-primary);
+  background-color: var(--surface-hover);
+}
+
+.nav-link-active:hover {
+  color: var(--color-primary-hover);
+  background-color: var(--surface-hover);
+}
+
+/* Mobile Menu Button */
+.menu-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2);
+  background: none;
+  border: none;
+  color: var(--text-secondary);
+  cursor: pointer;
+  border-radius: var(--radius-md);
+  transition: all 0.2s ease;
+}
+
+.menu-button:hover {
+  color: var(--text-primary);
+  background-color: var(--surface-hover);
+}
+
+/* Mobile Navigation */
+.nav-mobile {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-4) 0;
+  border-top: 1px solid var(--border-color);
+  gap: var(--space-1);
+}
+
+.nav-link-mobile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  padding: var(--space-3) var(--space-4);
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: var(--radius-md);
+  margin: 0 var(--space-2);
+}
+
+.nav-link-mobile:hover {
+  color: var(--text-primary);
+  background-color: var(--surface-hover);
+}
+
+.nav-link-mobile.nav-link-active {
+  color: var(--color-primary);
+  background-color: var(--surface-hover);
+}
+
+.nav-link-mobile.nav-link-active:hover {
+  color: var(--color-primary-hover);
+  background-color: var(--surface-hover);
+}
+
+/* Header Actions */
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.theme-toggle:hover {
+  background-color: var(--surface-hover);
+  color: var(--text-primary);
+  border-color: var(--color-primary);
+}
+
+.theme-toggle:active {
+  transform: scale(0.95);
+}
+
+/* Mobile Theme Toggle */
+.theme-toggle-mobile {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  width: 100%;
+  padding: var(--space-3);
+  background: none;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  color: var(--text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: var(--font-size-base);
+  margin-top: var(--space-2);
+}
+
+.theme-toggle-mobile:hover {
+  background-color: var(--surface-hover);
+  color: var(--text-primary);
+  border-color: var(--color-primary);
+}
+
+/* Responsive Design */
+@media (min-width: 640px) {
+  .logo-text {
+    display: block;
+  }
+  
+  .nav-desktop {
+    display: flex;
+  }
+  
+  .menu-button {
+    display: none;
+  }
+  
+  .nav-mobile {
+    display: none;
+  }
+}

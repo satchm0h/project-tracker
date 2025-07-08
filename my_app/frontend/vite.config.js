@@ -11,6 +11,7 @@ export default defineConfig({
     proxy: {
       '/api': 'http://localhost:5000',
     },
+    allowedHosts: ['localhost', '127.0.0.1', 'u71c01p02-vrouter.cisco.com'],
   },
   test: {
     environment: 'jsdom',

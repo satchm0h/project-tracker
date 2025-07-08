@@ -1,0 +1,85 @@
+/* Form Field Component Styles */
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.form-field-label {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: var(--font-size-sm);
+  margin-bottom: var(--space-1);
+}
+
+.form-field-required {
+  color: var(--color-error);
+  margin-left: var(--space-1);
+}
+
+.form-field-input {
+  padding: var(--space-3);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-base);
+  transition: all 0.2s ease;
+  background-color: var(--surface-color);
+  color: var(--text-primary);
+  min-height: 42px;
+}
+
+.form-field-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
+.form-field-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+.form-field-input.form-field-error {
+  border-color: var(--color-error);
+}
+
+.form-field-input.form-field-error:focus {
+  border-color: var(--color-error);
+  box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.form-field-error-message {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  color: var(--color-error);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-1);
+}
+
+.form-field-help {
+  color: var(--text-secondary);
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-1);
+}
+
+/* Textarea specific styles */
+textarea.form-field-input {
+  resize: vertical;
+  min-height: 100px;
+  font-family: inherit;
+}
+
+/* Select specific styles */
+select.form-field-input {
+  cursor: pointer;
+  padding-right: var(--space-8);
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 20 20'%3E%3Cpath stroke='%236b7280' stroke-linecap='round' stroke-linejoin='round' stroke-width='1.5' d='M6 8l4 4 4-4'/%3E%3C/svg%3E");
+  background-position: right var(--space-2) center;
+  background-repeat: no-repeat;
+  background-size: 20px;
+  appearance: none;
+}
+
+select.form-field-input option {
+  padding: var(--space-2);
+}
