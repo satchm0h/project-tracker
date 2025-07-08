@@ -1,4 +1,9 @@
-from app.cli import init_db_command, create_leader_command, seed_data_command, list_projects_command
+from app.cli import (
+    create_leader_command,
+    init_db_command,
+    list_projects_command,
+    seed_data_command,
+)
 from app.services import list_leaders, list_projects
 
 

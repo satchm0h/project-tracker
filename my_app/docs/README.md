@@ -123,3 +123,19 @@ The React frontend can be styled using your preferred approach:
 The repository includes a `global.css` file imported in `main.jsx` and a sample
 `ProjectList.module.css` demonstrating component-level styles.
 
+## Production Deployment with Docker
+
+1. Build the Docker image:
+
+   ```bash
+   docker build -t project-tracker .
+   ```
+
+2. Run the container:
+
+   ```bash
+   docker run -d -p 5000:5000 project-tracker
+   ```
+
+   The service will listen on port `5000` and serve the compiled SPA along with the API.
+
