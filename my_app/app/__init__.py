@@ -1,10 +1,12 @@
 from flask import Flask
+import os
 
 from .database import db
 
 
 def create_app(config_object: str | None = "app.config.Config", **overrides):
-    app = Flask(__name__)
+    static_folder = os.path.join(os.path.dirname(__file__), "..", "static")
+    app = Flask(__name__, static_folder=static_folder, static_url_path="/")
     if config_object:
         app.config.from_object(config_object)
     if overrides:
@@ -17,5 +19,10 @@ def create_app(config_object: str | None = "app.config.Config", **overrides):
 
     app.register_blueprint(views_bp)
     register_cli(app)
+
+    @app.route("/")
+    def index():
+        """Serve the compiled SPA entry point."""
+        return app.send_static_file("index.html")
 
     return app
