@@ -24,7 +24,9 @@ def test_leader_routes(client, app):
 
 def test_project_routes(client, app):
     # create leader first
-    leader = client.post("/api/leaders", json={"name": "Bob", "email": "b@e.com"}).get_json()
+    leader = client.post(
+        "/api/leaders", json={"name": "Bob", "email": "b@e.com"}
+    ).get_json()
 
     payload = {
         "name": "Proj",
